@@ -2,7 +2,7 @@
   "name": "vscode-env-ready",
   "displayName": "Environment Ready",
   "description": "Shows a status-bar banner while waiting for configured extensions to activate, then flips to 'ready' with an optional toast notification.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "danielcreggatu",
   "license": "MIT",
   "icon": "images/icon.png",
