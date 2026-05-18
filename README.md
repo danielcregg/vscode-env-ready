@@ -6,10 +6,10 @@ Designed for GitHub Codespaces, dev containers, and other remote development env
 
 ## Installation
 
-Install from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=danielcregg.vscode-env-ready), the **Extensions** sidebar in VS Code, or from the command line:
+Install from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=danielcreggatu.vscode-env-ready), the **Extensions** sidebar in VS Code, or from the command line:
 
 ```
-code --install-extension danielcregg.vscode-env-ready
+code --install-extension danielcreggatu.vscode-env-ready
 ```
 
 To include it automatically in a dev container or Codespace, add it to `devcontainer.json`:
@@ -18,7 +18,7 @@ To include it automatically in a dev container or Codespace, add it to `devconta
 {
   "customizations": {
     "vscode": {
-      "extensions": ["danielcregg.vscode-env-ready"]
+      "extensions": ["danielcreggatu.vscode-env-ready"]
     }
   }
 }
