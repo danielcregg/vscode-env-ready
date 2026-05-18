@@ -4,9 +4,9 @@ Instructions for AI coding agents (Claude Code, Cursor, Codex, etc.) working on 
 
 ## What this is
 
-A VS Code extension (`danielcreggatu.vscode-env-ready`) that shows a status-bar banner while waiting for configured extensions to activate, then flips to "ready". Intended for Codespaces / dev containers where the user wants a clear signal that the environment is fully loaded.
+A VS Code extension (`danielcreggatu.env-ready`) that shows a status-bar banner while waiting for configured extensions to activate, then flips to "ready". Intended for Codespaces / dev containers where the user wants a clear signal that the environment is fully loaded.
 
-Published to the VS Code Marketplace: https://marketplace.visualstudio.com/items?itemName=danielcreggatu.vscode-env-ready
+Published to the VS Code Marketplace: https://marketplace.visualstudio.com/items?itemName=danielcreggatu.env-ready
 
 ## Layout
 
@@ -36,7 +36,7 @@ images/icon.png           128x128 Marketplace icon.
 | `npm run check-types` | `tsc --noEmit`. Type-check only. |
 | `npm run lint` | ESLint over `src/`. |
 | `npm run format` / `format:fix` | Prettier check / write. |
-| `npm run package` | `vsce package` → produces `vscode-env-ready-<version>.vsix`. |
+| `npm run package` | `vsce package` → produces `env-ready-<version>.vsix`. |
 | `npm run publish` | `vsce publish`. Runs `vscode:prepublish` (check-types + lint + production esbuild) first. |
 
 ## Local development

@@ -1,5 +1,5 @@
 {
-  "name": "vscode-env-ready",
+  "name": "env-ready",
   "displayName": "Environment Ready",
   "description": "Shows a status-bar banner while waiting for configured extensions to activate, then flips to 'ready' with an optional toast notification.",
   "version": "0.1.2",
