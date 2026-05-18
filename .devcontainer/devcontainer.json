@@ -1,5 +1,22 @@
 {
   "name": "vscode-env-ready",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
-  "postCreateCommand": "npm install"
+
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  "postCreateCommand": "npm install",
+
+  "remoteUser": "node",
+
+  "forwardPorts": [],
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "amodio.tsl-problem-matcher"
+      ]
+    }
+  }
 }
