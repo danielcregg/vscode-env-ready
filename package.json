@@ -1,0 +1,82 @@
+{
+  "name": "vscode-env-ready",
+  "displayName": "Environment Ready",
+  "description": "Shows a status-bar banner while waiting for configured extensions to activate, then flips to 'ready' with an optional toast notification.",
+  "version": "0.1.0",
+  "publisher": "danielcregg",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "codespaces",
+    "loading",
+    "banner",
+    "ready",
+    "status bar"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danielcregg/vscode-env-ready.git"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Environment Ready",
+      "properties": {
+        "envReady.waitFor": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Extension IDs to wait for before showing 'ready'. e.g. ['ms-python.python', 'ms-vscode.live-server']. If empty, the extension does nothing."
+        },
+        "envReady.timeoutSeconds": {
+          "type": "number",
+          "default": 60,
+          "description": "Maximum seconds to wait before showing 'ready' anyway, even if some extensions haven't activated."
+        },
+        "envReady.loadingText": {
+          "type": "string",
+          "default": "Environment loading…",
+          "description": "Text shown in the status bar while extensions are activating."
+        },
+        "envReady.readyText": {
+          "type": "string",
+          "default": "Environment ready",
+          "description": "Text shown when all configured extensions have finished activating."
+        },
+        "envReady.showReadyToast": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show a one-time notification toast when the environment becomes ready."
+        },
+        "envReady.hideAfterSeconds": {
+          "type": "number",
+          "default": 10,
+          "description": "After becoming ready, hide the status-bar item after this many seconds. Set to 0 to keep it visible."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.75.0",
+    "@vscode/vsce": "^2.24.0",
+    "typescript": "^5.3.0"
+  }
+}
