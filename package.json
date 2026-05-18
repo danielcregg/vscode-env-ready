@@ -6,7 +6,8 @@
   "publisher": "danielcregg",
   "license": "MIT",
   "engines": {
-    "vscode": "^1.75.0"
+    "vscode": "^1.75.0",
+    "node": ">=18.17"
   },
   "categories": [
     "Other"
@@ -78,5 +79,8 @@
     "@types/vscode": "^1.75.0",
     "@vscode/vsce": "^2.24.0",
     "typescript": "^5.3.0"
+  },
+  "overrides": {
+    "undici": "^6.21.3"
   }
 }

@@ -4,6 +4,7 @@ src/**
 node_modules/**
 .gitignore
 .vscodeignore
+.nvmrc
 tsconfig.json
 **/*.map
 **/*.ts
