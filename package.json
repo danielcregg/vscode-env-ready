@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "publisher": "danielcregg",
   "license": "MIT",
+  "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.75.0",
     "node": ">=18.17"
@@ -19,14 +20,31 @@
     "ready",
     "status bar"
   ],
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/danielcregg/vscode-env-ready.git"
   },
+  "bugs": {
+    "url": "https://github.com/danielcregg/vscode-env-ready/issues"
+  },
+  "homepage": "https://github.com/danielcregg/vscode-env-ready#readme",
   "activationEvents": [
     "onStartupFinished"
   ],
   "main": "./out/extension.js",
+  "extensionKind": [
+    "workspace"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    },
+    "virtualWorkspaces": true
+  },
   "contributes": {
     "configuration": {
       "title": "Environment Ready",
