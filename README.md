@@ -1,4 +1,4 @@
-# Environment Ready
+# Env Ready
 
 A status-bar indicator that shows when configured VS Code extensions have finished activating.
 

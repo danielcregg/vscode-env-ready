@@ -1,6 +1,6 @@
 {
   "name": "env-ready",
-  "displayName": "Environment Ready",
+  "displayName": "Env Ready",
   "description": "Shows a status-bar banner while waiting for configured extensions to activate, then flips to 'ready' with an optional toast notification.",
   "version": "0.1.3",
   "publisher": "danielcreggatu",
@@ -47,7 +47,7 @@
   },
   "contributes": {
     "configuration": {
-      "title": "Environment Ready",
+      "title": "Env Ready",
       "properties": {
         "envReady.waitFor": {
           "type": "array",

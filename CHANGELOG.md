@@ -1,8 +1,8 @@
 # Changelog
 
-All notable changes to the **Environment Ready** extension will be documented in this file.
+All notable changes to the **Env Ready** extension will be documented in this file.
 
-## [0.1.0] - 2026-05-18
+## [0.1.4] - 2026-05-19
 
 ### Added
 - Initial release.
