@@ -2,7 +2,7 @@
   "name": "env-ready",
   "displayName": "Env Ready",
   "description": "Shows a splash page and status-bar indicator while waiting for configured VS Code extensions to activate. Perfect for Codespaces and dev containers where the editor opens before the language tooling is ready.",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "publisher": "danielcreggatu",
   "license": "MIT",
   "icon": "images/icon.png",
