@@ -1,7 +1,7 @@
 {
   "name": "env-ready",
   "displayName": "Env Ready",
-  "description": "Shows a status-bar banner while waiting for configured extensions to activate, then flips to 'ready' with an optional toast notification.",
+  "description": "Shows a splash page and status-bar indicator while waiting for configured VS Code extensions to activate. Perfect for Codespaces and dev containers where the editor opens before the language tooling is ready.",
   "version": "0.1.4",
   "publisher": "danielcreggatu",
   "license": "MIT",
@@ -16,9 +16,11 @@
   "keywords": [
     "codespaces",
     "loading",
+    "splash",
     "banner",
     "ready",
-    "status bar"
+    "status bar",
+    "dev container"
   ],
   "galleryBanner": {
     "color": "#1e1e1e",
@@ -81,6 +83,21 @@
           "type": "number",
           "default": 10,
           "description": "After becoming ready, hide the status-bar item after this many seconds. Set to 0 to keep it visible."
+        },
+        "envReady.showSplash": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show a fullscreen splash page in the editor area while waiting for extensions to activate. The splash auto-closes when all listed extensions are ready. Set to false to use only the status-bar indicator."
+        },
+        "envReady.splashTitle": {
+          "type": "string",
+          "default": "Setting up your environment",
+          "description": "Title shown on the splash page."
+        },
+        "envReady.splashMessage": {
+          "type": "string",
+          "default": "Loading the extensions you need to start coding. This usually takes just a few seconds.",
+          "description": "Description text shown on the splash page."
         }
       }
     }

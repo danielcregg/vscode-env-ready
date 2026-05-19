@@ -1,32 +1,42 @@
 # Env Ready
 
-A status-bar indicator that shows when configured VS Code extensions have finished activating.
+> A VS Code extension that shows a fullscreen splash page and a status-bar indicator while waiting for other extensions to finish activating. Hard to miss, auto-closes the moment everything is ready.
 
-Designed for GitHub Codespaces, dev containers, and other remote development environments where the editor window opens before language servers and tooling (Pylance, Java extensions, Jupyter, etc.) have finished loading. The indicator gives users a clear signal that the environment is fully ready before they start running or debugging code.
+Built for **GitHub Codespaces / dev containers** where the editor window opens before tooling like the Python extension (Pylance) has finished loading — and beginner students don't realise they need to wait before the ▶ Run button appears.
 
-## Installation
+---
 
-Install from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=danielcreggatu.env-ready), the **Extensions** sidebar in VS Code, or from the command line:
+## What it looks like
+
+When configured extensions are still activating, the **editor area is taken over by a splash page**:
 
 ```
-code --install-extension danielcreggatu.env-ready
+🐍
+
+Setting up your environment
+
+Loading the extensions you need to start coding.
+This usually takes just a few seconds.
+
+▰▰▰▱▱▱▱▱▱▱▱▱  ← animated indeterminate progress bar
+
+⟳ Activating extensions…
+
+💡 This page will close automatically when everything is ready.
 ```
 
-To include it automatically in a dev container or Codespace, add it to `devcontainer.json`:
+A subtle status-bar item also shows `⟳ Environment loading…` in the bottom-left.
 
-```json
-{
-  "customizations": {
-    "vscode": {
-      "extensions": ["danielcreggatu.env-ready"]
-    }
-  }
-}
-```
+When all configured extensions are active:
+- The splash page closes automatically.
+- Status bar flips to `✓ Environment ready` for a few seconds.
+- A toast notification confirms: *"Environment ready — you can start coding!"*
 
-## Usage
+---
 
-The extension is inert until you list which extensions it should wait for. Add an `envReady.waitFor` entry to your workspace `.vscode/settings.json` or to the `settings` block in `devcontainer.json`:
+## Configuration
+
+Add to your workspace `.vscode/settings.json` or to the `settings` block in `devcontainer.json`:
 
 ```json
 {
@@ -37,24 +47,59 @@ The extension is inert until you list which extensions it should wait for. Add a
 }
 ```
 
-While any listed extension is still activating, a warning-coloured item is shown in the status bar with the configured loading text. Once all listed extensions are active — or the timeout elapses — the item switches to the ready state and, by default, disappears after a short delay.
+If `envReady.waitFor` is empty (the default), the extension does nothing. So it's safe to install in any project — it only activates when you opt in.
 
-If `envReady.waitFor` is empty (the default), the extension does nothing. It is safe to install in any project.
-
-## Settings
+### All settings
 
 | Setting | Default | Description |
-| --- | --- | --- |
-| `envReady.waitFor` | `[]` | Extension IDs to wait for. The status flips to ready only when **all** listed extensions are active. |
-| `envReady.timeoutSeconds` | `60` | Fallback timeout. The indicator marks itself ready after this many seconds even if some extensions have not activated, so it never gets stuck. |
+|---|---|---|
+| `envReady.waitFor` | `[]` | Array of extension IDs (e.g. `"ms-python.python"`) to wait for. The extension watches each one and only marks itself "ready" when **all** of them are active. |
+| `envReady.timeoutSeconds` | `60` | Fallback timeout. If extensions still haven't activated after this many seconds, mark "ready" anyway so the indicator doesn't get stuck. |
 | `envReady.loadingText` | `"Environment loading…"` | Text shown in the status bar while waiting. |
-| `envReady.readyText` | `"Environment ready"` | Text shown once all listed extensions are active. |
-| `envReady.showReadyToast` | `true` | Show a one-time notification when the environment becomes ready. |
-| `envReady.hideAfterSeconds` | `10` | Hide the status-bar item this many seconds after becoming ready. Set to `0` to keep it visible. |
+| `envReady.readyText` | `"Environment ready"` | Text shown once everything is active. |
+| `envReady.showReadyToast` | `true` | Whether to pop a toast notification when becoming ready. |
+| `envReady.hideAfterSeconds` | `10` | After becoming ready, hide the status-bar item after this many seconds. Set to `0` to keep it visible forever. |
+| `envReady.showSplash` | `true` | Whether to show the fullscreen splash page. Set to `false` for the status-bar-only experience. |
+| `envReady.splashTitle` | `"Setting up your environment"` | Title shown on the splash page. |
+| `envReady.splashMessage` | `"Loading the extensions you need to start coding. This usually takes just a few seconds."` | Description text shown on the splash page. |
+
+---
+
+## Compatibility
+
+Works on **VS Code Desktop**, **VS Code in the browser** (Codespaces), and **vscode.dev**. The webview API is identical across all of them.
+
+On Desktop, where extensions are typically pre-loaded, the early-return check usually fires and the splash doesn't even appear. On Codespaces / fresh containers, the splash takes over the editor while extensions stream in.
+
+The splash webview has scripts disabled. All animation is pure CSS — no JavaScript, no remote content, nothing to audit. Safe to install anywhere.
+
+---
+
+## Installing
+
+### From the VS Code Marketplace
+
+```
+code --install-extension danielcreggatu.env-ready
+```
+
+Or via the Extensions sidebar in VS Code, or by adding it to a `devcontainer.json`:
+
+```json
+"customizations": {
+  "vscode": {
+    "extensions": ["danielcreggatu.env-ready"]
+  }
+}
+```
+
+---
 
 ## Issues and feedback
 
 Bug reports and feature requests are welcome at [github.com/danielcregg/vscode-env-ready/issues](https://github.com/danielcregg/vscode-env-ready/issues).
+
+---
 
 ## License
 

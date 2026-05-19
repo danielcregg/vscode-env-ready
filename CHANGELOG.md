@@ -2,6 +2,22 @@
 
 All notable changes to the **Env Ready** extension will be documented in this file.
 
+## [0.2.0] - 2026-05-19
+
+### Added
+- **Splash page**: a fullscreen webview that takes over the editor area while extensions are activating. Shows an animated logo, an indeterminate progress bar, a spinner, and a "this will close automatically" tip. Auto-closes when all configured extensions are ready, or when the timeout elapses.
+- `envReady.showSplash` setting (default `true`) — disable to use only the status-bar indicator.
+- `envReady.splashTitle` setting — customize the splash title (default: *"Setting up your environment"*).
+- `envReady.splashMessage` setting — customize the splash description text.
+
+### Changed
+- The splash and the status-bar item now run side by side during loading. After the splash closes, the status bar persists as the ready indicator (and auto-hides after `hideAfterSeconds`).
+- Short-circuits before opening the splash if all configured extensions are already active — so on VS Code Desktop, where extensions are usually pre-loaded, the splash typically won't appear at all.
+
+### Notes
+- Splash text uses VS Code theme variables, so it adapts to whatever colour theme the user is on.
+- The splash webview has scripts disabled (`enableScripts: false`) — all animation is pure CSS, no JS, no remote content. Safe by construction.
+
 ## [0.1.4] - 2026-05-19
 
 ### Added
