@@ -79,6 +79,7 @@ If `vsce publish` returns 401, the PAT has almost certainly expired or was creat
 - **Do not edit `.vsix` files in-tree.** They're build output. The packaged `.vsix` is git-ignored.
 - **Keep `.vscodeignore` tight.** Anything not strictly needed at runtime (dev configs, build scripts, source maps in production, `out/`) should be excluded. The shipped `.vsix` should be ~8 KB / 8 files for this extension. If it grows past ~50 KB you've leaked something.
 - **`publisher` in `package.json` is `danielcreggatu`.** Do not change it — it must match the Marketplace publisher ID, and changing it abandons the existing listing.
+- **`activationEvents: ["*"]` is intentional.** The extension's purpose is to be active during startup. `vsce package` will print a yellow warning suggesting a narrower event — ignore it. Switching to `onStartupFinished` defeats the splash (the event fires *after* most extensions have finished loading). The early-return for empty `waitFor` keeps the cost near-zero for unconfigured installs.
 - **`main` field points to `dist/extension.js`.** If you switch bundlers or output paths, update this too or the published extension won't load.
 - **Bump the version before tagging.** The workflow refuses to publish if tag and `package.json` disagree.
 - **Don't add new top-level config files casually.** Prefer extending an existing one (eslint, prettier, tsconfig) over introducing another.

@@ -2,6 +2,11 @@
 
 All notable changes to the **Env Ready** extension will be documented in this file.
 
+## [0.2.1] - 2026-05-19
+
+### Changed
+- Activation event is now `"*"` (was `"onStartupFinished"`). The previous event fired *after* the startup phase completed, so the extension only activated once most other extensions were already loaded — leaving only a few seconds for the splash to be visible. With `"*"`, the splash appears at the start of the loading window. The first 4 lines of `activate()` short-circuit when `envReady.waitFor` is empty, so the cost for unconfigured installs is negligible.
+
 ## [0.2.0] - 2026-05-19
 
 ### Added

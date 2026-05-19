@@ -35,7 +35,7 @@
   },
   "homepage": "https://github.com/danielcregg/vscode-env-ready#readme",
   "activationEvents": [
-    "onStartupFinished"
+    "*"
   ],
   "main": "./dist/extension.js",
   "extensionKind": [
